@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="examen_sxe.list">
+            <field name="name">examen_sxe list</field>
+            <field name="model">test_model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id"/>
+                    <field name="producto"/>
+                    <field name="viabilidad"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="examen_sxe.action_window">
+            <field name="name">examen_sxe window</field>
+            <field name="res_model">test_model</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem name="ExamenSXE" id="examen_sxe.menu_root"/>
+
+        <!-- menu categories -->
+        <menuitem name="Menu 1" id="examen_sxe.menu_1" parent="examen_sxe.menu_root"/>
+        <menuitem name="Menu 2" id="examen_sxe.menu_2" parent="examen_sxe.menu_root"/>
+
+        <!-- actions -->
+        <menuitem name="List" id="examen_sxe.menu_1_list" parent="examen_sxe.menu_1"
+                  action="examen_sxe.action_window"/>
+
+        <!-- Form view with button to create 5 products -->
+        <record id="view_test_model_form" model="ir.ui.view">
+            <field name="name">test.model.form</field>
+            <field name="model">test_model</field>
+            <field name="arch" type="xml">
+                <form string="Test Model">
+                    <header>
+                        <button name="create_five_products" string="Crear 5 productos" type="object" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <field name="id"/>
+                        <field name="producto"/>
+                        <field name="viabilidad"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
